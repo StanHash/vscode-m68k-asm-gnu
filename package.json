@@ -1,8 +1,10 @@
 {
     "name": "m68k-asm-gnu",
     "displayName": "M68000 Assembly (GNU AS)",
-    "description": "",
-    "version": "0.0.1",
+    "description": "m68k asm (gnu as) syntax highlighting for VS code",
+    "version": "1.0.0",
+    "publisher": "StanH",
+    "repository": "https://github.com/StanHash/vscode-m68k-asm-gnu",
     "engines": {
         "vscode": "^1.56.0"
     },
