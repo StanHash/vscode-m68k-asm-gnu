@@ -2,7 +2,7 @@
     "name": "m68k-asm-gnu",
     "displayName": "M68000 Assembly (GNU AS)",
     "description": "m68k asm (gnu as) syntax highlighting for VS code",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "publisher": "StanH",
     "repository": "https://github.com/StanHash/vscode-m68k-asm-gnu",
     "engines": {
@@ -18,22 +18,10 @@
             "extensions": [".s",".asm"],
             "configuration": "./configs/m68k-gnu-configuration.json"
         }],
-        "grammars": [
-            {
-                "language": "m68k-gnu",
-                "scopeName": "source.m68k.gnu",
-                "path": "./syntaxes/m68k-gnu.tmLanguage.json"
-            },
-            {
-                "scopeName": "opcodes.m68k",
-                "path": "./syntaxes/m68k-gnu-opcodes.tmLanguage.json",
-                "injectTo": [ "source.m68k.gnu" ]
-            },
-            {
-                "scopeName": "directives.m68k",
-                "path": "./syntaxes/m68k-gnu-directives.tmLanguage.json",
-                "injectTo": [ "source.m68k.gnu" ]
-            }
-        ]
+        "grammars": [{
+            "language": "m68k-gnu",
+            "scopeName": "source.m68k.gnu",
+            "path": "./syntaxes/m68k-gnu.tmLanguage.json"
+        }]
     }
 }

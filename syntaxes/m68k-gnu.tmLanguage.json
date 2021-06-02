@@ -1,5 +1,6 @@
 {
     "name": "M68000 (GNU AS)",
+    "scopeName": "source.m68k.gnu",
     "patterns":
     [
         { "include": "#comments" },
@@ -7,9 +8,12 @@
         { "include": "#numbers" },
         { "include": "#symbols" },
         { "include": "#registers" },
-        { "include": "#operators" }
+        { "include": "#directives" },
+        { "include": "#operators" },
+        { "include": "#mnemonics" }
     ],
-    "repository": {
+    "repository":
+    {
         "comments":
         {
             "patterns":
@@ -40,29 +44,103 @@
         },
         "numbers":
         {
-            "patterns":
-            [
-                {
-                    "name": "constant.numeric.m64k.gnu",
-                    "match": "0[bB][01]+|0[xX][a-fA-F0-9]+|0[0-7]*|[1-9][0-9]*"
-                }
-            ]
+            "name": "constant.numeric.m64k.gnu",
+            "match": "\\b(0[bB][01]+|0[xX][a-fA-F0-9]+|0[0-7]*|[1-9][0-9]*)\\b"
         },
         "symbols":
         {
             "name": "entity.name.function.label.m64k.gnu",
-            "match": "[a-zA-Z_\\.$][0-9a-zA-Z_\\.$]*(?=\\s*[\\:\\=])"
+            "match": "\\b[a-zA-Z_\\.$][0-9a-zA-Z_\\.$]*(?=\\s*[\\:\\=])"
         },
         "registers":
         {
             "name": "variable.language.register.m64k.gnu",
-            "match": "%?([ad][0-7]|sp|fp|pc|zpc|za[0-7])"
+            "match": "%?([ad][0-7]|sp|fp|pc|zpc|za[0-7])\\b"
+        },
+        "directives":
+        {
+            "patterns":
+            [
+                {
+                    "name": "keyword.control.m68k.gnu",
+                    "match": "\\B(?i)\\.(abort|align|altmacro|ascii|asciz|attach_to_group|balign|byte|comm|data|def|desc|dim|double|eject|else|elseif|end|endef|endfunc|endif|endm|endr|equ|equiv|eqv|err|error|exitm|extern|fail|file|fill|float|func|global|gnu_attribute|hidden|hword|ident|if|incbin|include|int|internal|irp|irpc|lcomm|lflags|line|linkonce|list|ln|loc|loc_mark_labels|local|long|macro|mri|noaltmacro|nolist|nop|nops|octa|offset|org|p2align|popsection|previous|print|protected|psize|purgem|pushsection|quad|reloc|rept|sbttl|scl|section|set|short|single|size|skip|sleb128|space|stabd|struct|subsection|symver|tag|text|title|tls_common|type|uleb128|val|version|vtable_entry|vtable_inherit|warning|weak|weakref|word|zero|2byte|4byte|8byte)\\b"
+                },
+                {
+                    "name": "keyword.control.m68k.gnu",
+                    "match": "\\B(?i)\\.(data1|data2|even|arch|cpu)\\b"
+                },
+                {
+                    "name": "keyword.control.m68k.gnu",
+                    "match": "\\B(?i)\\.bundle_(align_mode|lock|unlock)\\b"
+                },
+                {
+                    "name": "keyword.control.m68k.gnu",
+                    "match": "\\B(?i)\\.cfi_\\w+\\b"
+                },
+                {
+                    "name": "keyword.control.m68k.gnu",
+                    "match": "\\B(?i)\\.dc(\\.[abdlswx])?\\w+\\b"
+                },
+                {
+                    "name": "keyword.control.m68k.gnu",
+                    "match": "\\B(?i)\\.dcb(\\.[bdlswx])?\\w+\\b"
+                },
+                {
+                    "name": "keyword.control.m68k.gnu",
+                    "match": "\\B(?i)\\.ds(\\.[bdlpswx])?\\w+\\b"
+                },
+                {
+                    "name": "keyword.control.m68k.gnu",
+                    "match": "\\B(?i)\\.string(8|16|32|64)?\\b"
+                }
+            ]
+        },
+        "mnemonics":
+        {
+            "patterns":
+            [
+                {
+                    "name": "keyword.mnemonic.m68k.gnu",
+                    "match": "\\b(?i)(unlk|reset|nop|stop|rte|rts|trap(v)?|rtr|jsr|jmp)\\b"
+                },
+                {
+                    "name": "keyword.mnemonic.m68k.gnu",
+                    "match": "\\b(?i)([ans]bcd|tas|s(t|f|hi|ls|cc|cs|ne|eq|vc|vs|pl|mi|ge|lt|gt|le))(\\.?[b])?\\b"
+                },
+                {
+                    "name": "keyword.mnemonic.m68k.gnu",
+                    "match": "\\b(?i)(link|swap|chk|(di|mul)[su])(\\.?[w])?\\b"
+                },
+                {
+                    "name": "keyword.mnemonic.m68k.gnu",
+                    "match": "\\b(?i)([lp]ea|moveq|exg)(\\.?[l])?\\b"
+                },
+                {
+                    "name": "keyword.mnemonic.m68k.gnu",
+                    "match": "\\b(?i)(d?b(ra|sr))(\\.?[bws])?\\b"
+                },
+                {
+                    "name": "keyword.mnemonic.m68k.gnu",
+                    "match": "\\b(?i)((d?b(t|f|hi|ls|cc|cs|ne|eq|vc|vs|pl|mi|ge|lt|gt|le|hs|lo))|shs|slo)(\\.?[bws])?\\b"
+                },
+                {
+                    "name": "keyword.mnemonic.m68k.gnu",
+                    "match": "\\b(?i)(b(tst|chg|clr|set))(\\.?[bl])?\\b"
+                },
+                {
+                    "name": "keyword.mnemonic.m68k.gnu",
+                    "match": "\\b(?i)(cmpa|move[apm]|adda|suba|ext|div[su])(\\.?[wl])?\\b"
+                },
+                {
+                    "name": "keyword.mnemonic.m68k.gnu",
+                    "match": "\\b(?i)((e)?or(i)?|and(i)?|sub([iqx])?|add([iqx])?|cmp([mi])?|move|negx|clr|neg|not|tst|or|(as|ls|rox|ro)[lr])(\\.?[bwl])?\\b"
+                }
+            ]
         },
         "operators":
         {
             "name": "keyword.operator.m64k.gnu",
             "match": "(\\+|\\-|\\~|\\*|\\/|\\%|\\&|\\||\\^|\\!|\\<\\<|\\>\\>|\\=|\\;|\\:|\\=\\=|\\<\\>|\\!\\=|\\<|\\>|\\>\\=|\\<\\=|\\&\\&|\\|\\||\\(|\\)|\\@|\\.|\\#)"
         }
-    },
-    "scopeName": "source.m68k.gnu"
+    }
 }
