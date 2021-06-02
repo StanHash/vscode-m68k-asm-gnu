@@ -1,0 +1,37 @@
+{
+    "name": "m68k-asm-gnu",
+    "displayName": "M68000 Assembly (GNU AS)",
+    "description": "",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.56.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "m68k-gnu",
+            "aliases": ["M68000 (GNU AS)", "m68k-gnu"],
+            "extensions": [".s",".asm"],
+            "configuration": "./configs/m68k-gnu-configuration.json"
+        }],
+        "grammars": [
+            {
+                "language": "m68k-gnu",
+                "scopeName": "source.m68k.gnu",
+                "path": "./syntaxes/m68k-gnu.tmLanguage.json"
+            },
+            {
+                "scopeName": "opcodes.m68k",
+                "path": "./syntaxes/m68k-gnu-opcodes.tmLanguage.json",
+                "injectTo": [ "source.m68k.gnu" ]
+            },
+            {
+                "scopeName": "directives.m68k",
+                "path": "./syntaxes/m68k-gnu-directives.tmLanguage.json",
+                "injectTo": [ "source.m68k.gnu" ]
+            }
+        ]
+    }
+}
