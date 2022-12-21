@@ -55,7 +55,7 @@
         "registers":
         {
             "name": "variable.language.register.m64k.gnu",
-            "match": "%?([ad][0-7]|sp|fp|pc|zpc|za[0-7])\\b"
+            "match": "%?([adAD][0-7]|sp|SP|fp|FP|pc|PC|zpc|ZPC|za[0-7]|ZA[0-7])\\b"
         },
         "directives":
         {
